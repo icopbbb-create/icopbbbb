@@ -1,0 +1,279 @@
+/* app/my-journey/my-journey.module.css */
+
+/* Root and layout */
+.root {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 36px 20px 120px;
+  min-height: 72vh;
+  box-sizing: border-box;
+  font-family: var(--font-bricolage, system-ui, -apple-system, "Segoe UI", Roboto, Arial);
+  color: #0f172a;
+}
+
+/* HERO: glass card with left info and right tools */
+.heroWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+.heroGlass {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  padding: 22px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(250,250,250,0.7));
+  box-shadow: 0 20px 48px rgba(10,14,20,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+  border: 1px solid rgba(15,23,42,0.04);
+}
+
+/* left */
+.heroLeft {
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+/* avatar with halo */
+.avatarWrap { position: relative; width: 120px; height: 120px; flex-shrink:0; }
+.avatar { border-radius: 999px; width:120px; height:120px; object-fit: cover; border: 6px solid rgba(255,255,255,0.9); box-shadow: 0 18px 46px rgba(6,16,26,0.06); }
+.avatarHalo {
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,125,60,0.14), rgba(255,140,70,0.06), transparent 55%);
+  filter: blur(16px);
+  animation: haloFloat 2400ms ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes haloFloat { 0%{ transform: scale(1); } 50%{ transform: scale(1.06);} 100%{ transform: scale(1);} }
+
+/* hero text */
+.heroMeta { display:flex; flex-direction:column; gap:8px; }
+.heroTitle { margin:0; font-size: 30px; font-weight:900; letter-spacing:-0.02em; }
+.nameGradient { background: linear-gradient(90deg,#ff7a3a,#fe5933 45%, #ffb86b); -webkit-background-clip:text; color:transparent; display:inline-block; }
+.heroEmail { color:#6b7280; font-size:13px; }
+
+/* stats row */
+.statsRow { display:flex; gap:12px; margin-top:10px; align-items:center; }
+.stat { display:flex; gap:12px; align-items:center; background: rgba(255,255,255,0.92); padding:10px 12px; border-radius:12px; box-shadow: 0 8px 20px rgba(12,16,20,0.03); border: 1px solid rgba(15,23,42,0.03); }
+.statIconWrap { width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg,#fff,#fff); box-shadow: 0 6px 16px rgba(10,14,20,0.03); }
+.statIconWrap img { width:18px; height:18px; }
+.statNum { font-weight:800; font-size:16px; }
+.statLabel { color:#6b7280; font-size:12px; }
+
+/* hero actions right */
+.heroActions { display:flex; flex-direction:column; gap:10px; align-items:flex-end; min-width:300px; } /* increased width to hide stray text */
+.actionsTop { color:#8b949e; font-size:13px; }
+.actionsBtns { display:flex; gap:12px; align-items:center; }
+.ctaPrimary {
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:999px;
+  background: linear-gradient(90deg,#ff7a3a 0%, #fe5933 60%);
+  color:white; font-weight:800;
+  box-shadow: 0 18px 48px rgba(254,89,51,0.12);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.ctaPrimary:hover { transform: translateY(-4px); box-shadow: 0 28px 86px rgba(254,89,51,0.16); }
+.ctaGhost { padding:10px 14px; border-radius:12px; background:white; border:1px solid rgba(15,23,42,0.04); color:#0f172a; font-weight:700; }
+.smallNote { color:#9aa1a8; font-size:12px; margin-top:6px; }
+
+/* main area and accordion */
+.mainArea { margin-top: 28px; }
+.accordion { display:block; }
+
+/* custom accordion trigger */
+.accordionTrigger {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 16px 18px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.96));
+  border: 1px solid rgba(15,23,42,0.03);
+  box-shadow: 0 6px 18px rgba(12,16,20,0.03);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.accordionTrigger:hover { transform: translateY(-4px); box-shadow: 0 18px 46px rgba(6,16,26,0.06); }
+.triggerLeft { display:flex; flex-direction:column; }
+.triggerTitle { font-weight:800; font-size:18px; }
+.triggerSub { color:#8b949e; font-size:13px; margin-top:4px; }
+
+/* animated chevron (pure CSS decoration) */
+.chev {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display:inline-block;
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.88));
+  border: 1px solid rgba(15,23,42,0.04);
+  position: relative;
+  box-shadow: 0 6px 18px rgba(12,16,20,0.03);
+}
+.chev::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #6b7280;
+  border-bottom: 2px solid #6b7280;
+  transform: rotate(45deg);
+  transition: transform .22s cubic-bezier(.2,.9,.2,1);
+}
+/* rotate when content expanded — the accordion lib toggles aria-expanded which can be targeted */
+[aria-expanded="true"] > .chev::after { transform: rotate(-135deg); left: 8px; top: 9px; border-color: #fe5933; }
+
+/* accordion content body */
+.accordionContent { padding: 18px 10px 28px; background: transparent; margin-bottom: 12px; }
+
+/* recent intro */
+.recentIntro { margin-bottom: 12px; display:flex; flex-direction:column; gap:6px; }
+.recentHeading { font-weight:800; font-size:16px; }
+.recentDesc { color:#6b7280; font-size:13px; }
+
+/* recent sessions grid */
+.recentGrid { display:flex; flex-direction:column; gap:12px; }
+
+/* session card */
+.sessionCard {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px;
+  border-radius:14px;
+  background: linear-gradient(180deg, #fff, #fff);
+  box-shadow: 0 14px 40px rgba(12,16,20,0.04);
+  border: 1px solid rgba(15,23,42,0.04);
+  overflow: hidden;
+  position:relative;
+}
+.sessionCard:hover { transform: translateY(-6px); box-shadow: 0 28px 70px rgba(12,16,20,0.06); }
+
+/* little accent bar on left */
+.cardAccent {
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:6px;
+  background: linear-gradient(180deg,#ff7a3a,#fe5933);
+  opacity:0.9;
+  border-top-left-radius:14px;
+  border-bottom-left-radius:14px;
+}
+
+/* left cluster */
+.sessionCardLeft { display:flex; align-items:center; gap:12px; min-width:0; }
+.sessionAvatar { width:56px; height:56px; border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#f3f4f6; flex-shrink:0; border:1px solid rgba(15,23,42,0.03); }
+.sessionAvatar img { width:48px; height:48px; object-fit:cover; }
+.sessionInitial { color:#374151; font-weight:800; font-size:20px; }
+.sessionMeta { min-width:0; }
+.sessionTitle { font-weight:800; font-size:15px; color:#0f172a; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:460px; }
+.sessionTime { color:#6b7280; font-size:12px; margin-top:6px; }
+
+/* right cluster */
+.sessionCardRight { display:flex; align-items:center; gap:16px; }
+.durationBox { display:flex; align-items:center; gap:6px; padding:8px 12px; border-radius:10px; background: linear-gradient(90deg, rgba(255,122,58,0.06), rgba(255,255,255,0.02)); border:1px solid rgba(15,23,42,0.03); min-width:86px; justify-content:center; }
+.durationNum { font-weight:800; font-size:20px; }
+.durationLabel { color:#6b7280; font-size:12px; }
+
+/* action buttons */
+.rowActions { display:flex; gap:10px; align-items:center; }
+.smallOutline { background:transparent; border:1px solid rgba(15,23,42,0.06); padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer; }
+.smallPrimary { padding:8px 12px; border-radius:10px; background: linear-gradient(90deg,#ff7a3a,#fe5933); color:white; font-weight:800; cursor:pointer; box-shadow: 0 10px 28px rgba(254,89,51,0.08); }
+
+/* empty */
+.emptyState { padding:18px; color:#6b7280; background: rgba(250,249,247,0.9); border-radius:10px; border:1px solid rgba(15,23,42,0.03); }
+
+/* responsive */
+@media (max-width: 880px) {
+  .heroGlass { flex-direction:column; align-items:flex-start; padding:18px; gap:14px; }
+  .heroActions { width:100%; align-items:flex-start; }
+  .sessionCard { flex-direction:column; align-items:flex-start; gap:12px; }
+  .sessionCardRight { width:100%; display:flex; justify-content:space-between; }
+  .sessionTitle { max-width:260px; }
+}
+
+/* ----------------------
+   Credits card styles
+   ---------------------- */
+
+/* wrapper for the credits dialog — add this class to the credits card element */
+.creditsCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #fffaf5);
+  border: 1px solid rgba(15,23,42,0.04);
+  box-shadow: 0 10px 28px rgba(12,16,20,0.04);
+  min-width: 320px; /* ensure card is wide enough so stray chars are hidden */
+}
+
+/* avatar area on the left of the credits card */
+.creditsAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg,#fff6e8,#ff8a4b);
+  box-shadow: 0 6px 14px rgba(16,24,40,0.06);
+  border: 1px solid rgba(15,23,42,0.03);
+  font-weight: 800;
+  color: #7a3414;
+  font-size: 14px;
+}
+
+/* If a broken img exists in markup, hide very small/broken images */
+.creditsAvatar img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  display: block;
+}
+.creditsAvatar img[width="1"][height="1"],
+.creditsAvatar img[src$="favicon.ico"],
+.creditsAvatar img[src$="logo-small.png"],
+.creditsAvatar img[src=""] {
+  display: none !important;
+}
+
+/* fallback initials when image not present — insert a span.avatarInitial inside creditsAvatar or let initials text live there */
+.creditsAvatar .avatarInitial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 800;
+  font-size: 14px;
+  color: #7a3414;
+}
+
+/* content area (text) */
+.creditsContent { display:flex; flex-direction:column; gap:4px; min-width: 0; }
+.creditsLabel { font-size: 13px; color: #6b7280; }
+.creditsAmount { font-weight: 900; font-size: 20px; color: #0f172a; }
+
+/* action group on the right inside the creditsCard (if present) */
+.creditsActions { margin-left: auto; display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+
+/* small responsive tweak so the card doesn't overflow on narrow screens */
+@media (max-width: 720px) {
+  .creditsCard { min-width: auto; width: 100%; padding: 12px; }
+  .heroActions { min-width: auto; }
+}

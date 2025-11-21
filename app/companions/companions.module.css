@@ -1,0 +1,114 @@
+/* app/companions/companions.module.css
+   Page-scoped styles for the Companions library (list view)
+*/
+
+.pageContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 36px 28px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    color: #071133;
+  }
+  
+  /* header row */
+  .headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  
+  .pageTitle {
+    font-size: 32px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -0.02em;
+    color: #071133;
+  }
+  
+  /* controls container */
+  .controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  /* small pulsing loader shown next to controls when a subject is selected */
+  .loader {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #ff7a3a, #fe5933);
+    box-shadow: 0 6px 16px rgba(254,89,51,0.16);
+    animation: loader-pulse 900ms infinite;
+    margin-left: 6px;
+  }
+  
+  /* loader keyframes */
+  @keyframes loader-pulse {
+    0% { transform: scale(0.86); opacity: 0.9; }
+    50% { transform: scale(1.12); opacity: 1; }
+    100% { transform: scale(0.86); opacity: 0.9; }
+  }
+  
+  /* list wrapper */
+  .gridWrap {
+    margin-top: 18px;
+    width: 100%;
+  }
+  
+  /* vertical list of full-width items with staggered animation */
+  .gridList {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* each item wrapper helps stagger animation */
+  .gridItem {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+    animation: row-appear-strong 420ms cubic-bezier(.2,.9,.2,1) forwards;
+  }
+  
+  /* stagger delays */
+  .gridItem:nth-child(1) { animation-delay: 0ms; }
+  .gridItem:nth-child(2) { animation-delay: 60ms; }
+  .gridItem:nth-child(3) { animation-delay: 110ms; }
+  .gridItem:nth-child(4) { animation-delay: 160ms; }
+  .gridItem:nth-child(5) { animation-delay: 200ms; }
+  .gridItem:nth-child(6) { animation-delay: 240ms; }
+  .gridItem:nth-child(7) { animation-delay: 280ms; }
+  .gridItem:nth-child(8) { animation-delay: 320ms; }
+  
+  /* stronger appear animation (fade + lift + tiny scale) */
+  @keyframes row-appear-strong {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* no results */
+  .noResults {
+    color: rgba(7,17,51,0.6);
+    padding: 18px;
+    background: rgba(0,0,0,0.02);
+    border-radius: 10px;
+  }
+  
+  /* responsive */
+  @media (max-width: 640px) {
+    .pageContainer { padding: 20px; }
+    .pageTitle { font-size: 26px; }
+    .gridList { gap: 12px; }
+  }
+  

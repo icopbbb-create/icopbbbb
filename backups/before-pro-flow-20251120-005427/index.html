@@ -1,0 +1,184 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu Voice Agent - Premium Educational Platform</title>
+    <meta name="description" content="Experience the future of education with Edu Voice Agent - your intelligent educational companion" />
+    <meta name="author" content="Edu Voice Agent" />
+
+    <meta property="og:title" content="Edu Voice Agent - Premium Educational Platform" />
+    <meta property="og:description" content="Experience the future of education with Edu Voice Agent - your intelligent educational companion" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Lovable" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Normalize displayed URL so SPA doesn't show its internal 404 -->
+    <script>
+      (function () {
+        try {
+          const p = window.location.pathname || "";
+          if (p.endsWith("/index.html") || p === "/edu-logo" || p.startsWith("/edu-logo/")) {
+            window.history.replaceState({}, "", "/");
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <script type="module" crossorigin src="/edu-logo/assets/index-CgG-emKk.js"></script>
+    <link rel="stylesheet" crossorigin href="/edu-logo/assets/index-LU4kdz-u.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- KEEPING YOUR FLAMES / BREATHING EFFECT EXACTLY THE SAME -->
+    <style id="edu-logo-golden-style">
+      :root{
+        --gold-strong: rgba(255,215,90,0.98);
+        --gold-mid: rgba(255,190,45,0.92);
+        --gold-soft: rgba(255,200,60,0.12);
+      }
+
+      @keyframes eduBreath {
+        0%   { filter: drop-shadow(0 0 6px var(--gold-soft)) brightness(0.98); transform: scale(1); opacity: 0.96; }
+        50%  { filter: drop-shadow(0 0 120px var(--gold-strong)) brightness(1.20); transform: scale(1.06); opacity: 1; }
+        100% { filter: drop-shadow(0 0 6px var(--gold-soft)) brightness(0.98); transform: scale(1); opacity: 0.96; }
+      }
+
+      @keyframes eduPulse {
+        0%   { filter: drop-shadow(0 0 12px var(--gold-soft)); transform: scale(1); }
+        50%  { filter: drop-shadow(0 0 220px var(--gold-strong)); transform: scale(1.08); }
+        100% { filter: drop-shadow(0 0 12px var(--gold-soft)); transform: scale(1); }
+      }
+
+      #edu-logo-overlay {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: min(780px, 66vw);
+        max-width: 780px;
+        z-index: 2147483647;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        flex-direction: column;
+        gap: 12px;
+        padding: 6px;
+        background: transparent;
+      }
+
+      #edu-logo-overlay img,
+      img.edu-logo-spa {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 40px 120px rgba(0,0,0,0.65);
+        -webkit-user-drag: none;
+        user-select: none;
+        cursor: pointer;
+        animation: eduBreath 2600ms linear infinite alternate;
+        transition: transform 150ms linear, filter 150ms linear, box-shadow 150ms linear;
+        will-change: transform, filter, opacity;
+        visibility: visible !important;
+        pointer-events: auto;
+      }
+
+      #edu-logo-overlay img:hover,
+      img.edu-logo-spa:hover {
+        animation: eduPulse 900ms linear infinite alternate;
+        transform: scale(1.07);
+      }
+
+      #edu-logo-caption {
+        color: #ffd88b;
+        font-weight: 600;
+        font-size: 18px;
+        text-align: center;
+        text-shadow:
+          0 0 12px rgba(255,205,60,0.30),
+          0 0 36px rgba(255,170,35,0.22),
+          0 0 68px rgba(255,150,30,0.12);
+        animation: eduBreath 2600ms linear infinite alternate;
+      }
+
+      @media (max-width: 520px) {
+        #edu-logo-overlay { width: min(360px, 86vw); gap: 10px; }
+        #edu-logo-caption { font-size: 14px; }
+      }
+    </style>
+
+    <div id="edu-logo-overlay">
+      <img
+        src="/edu-logo/assets/edu-voice-logo-DKsYEA5O.png"
+        alt="Edu Voice Agent"
+        id="edu-logo-overlay-image"
+      />
+      <div id="edu-logo-caption">Click to enter</div>
+    </div>
+
+    <script>
+      (function () {
+        // read redirect param like ?redirect=/xyz
+        function readRedirectParam() {
+          const params = new URLSearchParams(window.location.search || "");
+          const r = params.get("redirect");
+          if (!r) return null;
+          try {
+            const decoded = decodeURIComponent(r);
+            if (decoded.startsWith("/")) return decoded;
+            return null;
+          } catch {
+            return null;
+          }
+        }
+
+        // ALWAYS redirect to "/" (home) unless redirect param exists
+        function goHomeOrRedirect() {
+          const redirectPath = readRedirectParam();
+          if (redirectPath) {
+            window.location.href = redirectPath;
+            return;
+          }
+          window.location.href = "/";
+        }
+
+        function handleClick(ev) {
+          try { ev.preventDefault(); ev.stopImmediatePropagation(); } catch {}
+          goHomeOrRedirect();
+        }
+
+        const overlay = document.getElementById("edu-logo-overlay");
+        if (overlay) {
+          overlay.addEventListener("click", handleClick, {
+            capture: true,
+            passive: false,
+          });
+        }
+
+        // also apply to SPA image if rendered later
+        try {
+          const spaImg = document.querySelector('img[src*="edu-voice-logo"]');
+          if (spaImg) {
+            spaImg.classList.add("edu-logo-spa");
+            spaImg.style.cursor = "pointer";
+            spaImg.onclick = () => setTimeout(handleClick, 20);
+          }
+        } catch {}
+
+        window.addEventListener("load", () => {
+          setTimeout(() => {
+            const o = document.getElementById("edu-logo-overlay");
+            if (o) o.style.display = "flex";
+          }, 120);
+        });
+      })();
+    </script>
+  </body>
+</html>

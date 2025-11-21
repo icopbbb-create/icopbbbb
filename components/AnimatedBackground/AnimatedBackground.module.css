@@ -1,0 +1,77 @@
+.container {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* never block UI interactions */
+    overflow: hidden;
+    will-change: transform, opacity;
+    z-index: -1; /* default; can be overridden by inline style */
+  }
+  
+  /* Waves SVG container */
+  .wavesWrap {
+    position: absolute;
+    inset: 0;
+    display: block;
+    mix-blend-mode: screen;
+    opacity: 0.98;
+  }
+  
+  .waves {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* subtle soft drop-shadow and gentle movement for a premium look */
+  .wave {
+    transform-origin: center;
+    transition: transform 0.6s linear;
+    filter: drop-shadow(0 10px 30px rgba(124, 58, 237, 0.12));
+    animation: drift 18s ease-in-out infinite;
+  }
+  
+  .wave2 {
+    animation-duration: 26s;
+    opacity: 0.72;
+  }
+  
+  .wave3 {
+    animation-duration: 36s;
+    opacity: 0.5;
+  }
+  
+  @keyframes drift {
+    0% { transform: translateY(0) translateX(0) scale(1); }
+    50% { transform: translateY(-18px) translateX(8px) scale(1.02); }
+    100% { transform: translateY(0) translateX(0) scale(1); }
+  }
+  
+  /* Canvas layers for particles & matrix */
+  .canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    mix-blend-mode: normal;
+    opacity: 1;
+  }
+  
+  /* secondary canvas for extra glow/stars */
+  .canvas2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  
+  /* helper for premium soft backdrop when used behind modals */
+  .backdropSoft {
+    backdrop-filter: blur(6px) saturate(120%);
+  }
+  

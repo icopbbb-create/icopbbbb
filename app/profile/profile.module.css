@@ -1,0 +1,57 @@
+/* app/profile/profile.module.css */
+.profileRoot {
+    padding: 18px;
+    max-width: 520px;
+    margin: 18px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(10,10,10,0.06);
+    font-family: var(--font-bricolage, system-ui, sans-serif);
+    color: #0f172a;
+  }
+  
+  /* avatar */
+  .avatarWrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .avatarImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* menu */
+  .menu {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .menuItem {
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #0f172a;
+    text-decoration: none;
+    background: transparent;
+    transition: background .12s ease;
+  }
+  .menuItem:hover { background: rgba(15,23,42,0.03); }
+  
+  /* If your page uses lists or buttons, add minimal resets */
+  .profileRoot button, .profileRoot input, .profileRoot a {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+  

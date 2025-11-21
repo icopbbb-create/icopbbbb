@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# system files
+.DS_Store
+Thumbs.db
+
+# vercel & netlify
+.vercel/
+.netlify/
+
+# build artifacts
+dist/
+*.tsbuildinfo
